@@ -1,0 +1,31 @@
+
+{% extends "vohni/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static "css/blog.css" %}">{% endblock extra_css %}
+
+{% block content %}
+
+	<section class="main wrapper">
+
+	
+
+		<div class="col-sm-12 col-xs-12 text-center">
+		  <h2>
+			{{ post.title }}
+          </h2>
+        </div>
+		<div class="col-sm-12 col-xs-12">
+		<img src="{{ post.blog_photo.url }}" alt="" title="{{ post.blog_photo.url }}" class="blog_image_post">
+		</div>
+					
+		<div>
+		  <p class="text">{{ post.text }}</p>
+		</div>
+	
+
+	
+	</section><!-- Main End -->
+
+{% endblock content %}

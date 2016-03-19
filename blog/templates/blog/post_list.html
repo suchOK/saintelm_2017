@@ -1,0 +1,39 @@
+
+
+{% extends "vohni/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static "css/blog.css" %}">{% endblock extra_css %}
+
+{% block content %}
+
+	<section class="main wrapper">
+	{% for post in object_list %}
+		<article>
+
+		<div class="article_image">
+				<a href="#">
+					<img class="blog_image_list" src="{{ post.blog_photo.url }}" alt="" title="">
+				</a>
+			</div>
+			<div class="post">
+				<h1 class="title">
+					<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+				</h1>
+				
+				<p>{{ post.description }}</p>
+
+				<a class="read_more" href="{{ post.get_absolute_url }}">читати далі <i class="read_more_arrow"></i> </a>
+			</div>
+		</article>
+    {% empty %}
+        <p>ще немає жодного запису у блозі</p>
+    {% endfor %}
+		<nav class="pagination">
+			<a href="#" class="previous"><i></i>попередня</a>
+			<a href="#" class="next">наступна<i></i></a>
+		</nav><!-- Pagination End -->
+	</section><!-- Main End -->
+
+{% endblock content %}

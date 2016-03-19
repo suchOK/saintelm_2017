@@ -1,0 +1,161 @@
+{% extends "vohni/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+{% endblock extra_css %}
+
+{% block content %}
+
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-9 col-sm-offset-1" id="trip" style="background-image: url({{ journey.main_photo.url }});">
+    	
+      	<div class="main_info">
+      	  <h2 class="text-center">{{ journey.title }}</h2>
+      	  <h3 class="text-center">{{ journey.cities }}</h3>
+      	</div>
+      	<div>
+      		<h4 class="text-center">{{ journey.price }}</h4>
+      	</div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-1">
+    <ul class="nav nav-tabs details">
+      <li class=""><a aria-expanded="false" href="#home" data-toggle="tab">Маршрут</a></li>
+      <li class=""><a aria-expanded="true" href="#plan" data-toggle="tab">Умови</a></li>
+      <li class=""><a aria-expanded="true" href="#docs" data-toggle="tab">Документи</a></li>
+      <li class=""><a aria-expanded="true" href="#photo" data-toggle="tab">Фото</a></li>
+     <li class=""><a aria-expanded="true" href="#additional" data-toggle="tab">Додаткові опції</a></li>
+
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="home">
+        <div>
+        
+          <table>
+            <tbody>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_1.title_day1 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_1.day1 }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_2.title_day2 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_2.day2 }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_3.title_day3 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_3.day3 }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_4.title_day4 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_4.day4 }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_5.title_day5 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_5.day5 }}</td>
+              </tr>
+            </tbody>
+          </table>  
+           
+        </div>
+      </div>
+           
+
+      <div class="tab-pane fade" id="plan">
+        <div>
+        
+          <table>
+            <tbody>
+              <tr>
+                <td class="col-sm-2 name_days">Пожертва</td>
+                <td class="col-sm-9 text">{{ journey.conditions }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">У вартість входить</td>
+                <td class="col-sm-9 text">переїзд автобусом єврокласу, супровід духівника та керівника групи</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">У вартість не входить</td>
+                <td class="col-sm-9 text">екскурсії та інші особисті витрати</td>
+              </tr>
+
+            </tbody>
+          </table>  
+           
+          </div>
+       
+      </div>
+      <div class="tab-pane fade" id="docs">
+        <p class="text">{{ journey.documents }}</p>
+      </div>
+      <div class="tab-pane fade" id="additional">
+        <p class="text">{{ journey.options }}</p>
+      </div>
+     <div class="tab-pane fade" id="photo">
+      <!--<h3 class="text-center">{{ journey.gallery.title }}"</h3>-->
+      
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      {% for photo in journey.gallery.public %}
+    
+      
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="links">   
+          <a class="" href="{{ photo.image.url }}" title="{{ photo.title }}" data-gallery>
+            <img class="photologue_photo" src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}">
+          </a>
+        </div>
+  
+       
+      {% endfor %} 
+
+
+  </div>
+</div>
+
+      </div>
+    </div>
+
+
+    
+{% endblock content %}
+{% block extra_js %}
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="js/bootstrap-image-gallery.min.js"></script>
+{% endblock extra_js %}

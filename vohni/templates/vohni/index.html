@@ -1,0 +1,179 @@
+{% extends "vohni/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="jumbotron col-sm-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+       <div class="container_flame first_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+        <div class="container_flame third_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+        <div class="container_flame fifth_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+      </div>
+      <div class="col-sm-8 text-center">
+        <h3>Мандрівничий осередок</h3>
+          <p class="text_logo">"Вогні Святого Ельма"</p>
+           <p><a href="{% url "journeys" %}" class="btn btn-info btn-lg call_to_action">Гайда до мрії!</a></p>
+      </div>
+      <div class="col-sm-2">
+      <div class="container_flame second_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+
+        <div class="container_flame fourth_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container actual_trip">
+  <div class="row">
+    <div class="col-sm-12 text-center"><h2>Актуальні мандрівки</h2></div>
+
+    {% for journey in journeys %}
+      <div class="col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1 taize" style="background-image: url({{ journey.main_photo.url }});">
+        <h3 class="text-center">{{ journey.title }}</h3>
+          <h4 class="text-center text-primary">{{ journey.cities }}</h4>
+          <h4 class="text-center text-primary">{{ journey.price }}</h4>
+          <div class="text-center"><a class="btn btn-primary text-center" href="{% url "details" journey.id %}">детальніше</a></div>
+      </div>   
+    {% endfor %}
+
+  </div>
+</div>
+
+
+
+<div class="container advantages">
+  <div class="row">
+    <div class="col-sm-12 text-center"><h2>Наші переваги</h2></div>
+    
+    <div class="col-sm-3 text-center">
+      <h3>Спільнота</h3>
+      <img class="images" src="/media/svg/three.svg">
+      <p>Головне не куди, а з ким. Головна цінність - люди</p>
+    </div>
+    <div class="col-sm-3 text-center">
+      <h3>Доступність</h3>
+      <img class="images" src="/media/svg/bus.svg">
+      <p>Ми намагаємось максимально оптимізувати витрати, щоб кожен зміг мандрувати</p>
+    </div>
+    <div class="col-sm-3 text-center">
+      <h3>Цікаво</h3>
+      <img class="images" src="/media/svg/travel.svg">
+      <p>Ми відвідуємо ті місця, де є вдосталь цікавого для всіх</p>
+    </div>
+    <div class="col-sm-3 text-center">
+      <h3>Розвиток</h3>
+      <img class="images" src="/media/svg/buildings.svg">
+      <p>Духовність перш за все</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="container church">
+  <div class="row">
+    <div class="col-sm-3 text-center">
+      <img src="/media/img/draus.jpg" class="priest img-circle">    
+    </div>
+    <div class="col-sm-9 text-center">
+      <blockquote>
+        <h2>Наша маленька парафія організувала 4 (чотири) автобуси!! Як і великий-славний Рафаїл ))</h2>
+         <small>Отець Григорій Драус <cite title="Source Title">настоятель парафії св. Івана Павла II</cite></small>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<div class="container contacts">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h2>Контакти</h2>
+      
+    </div>
+      <div class="col-sm-4 text-center">
+        <img class="images" src="/media/svg/phone.svg">
+          <h3>+38 098 959 18 59</h3>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h3>Зв'яжіться з нами будь-яким зручним для Вас способом</h3>
+      </div>
+    <div class="col-sm-4 text-center">
+      <img class="images" src="/media/svg/mail.svg">
+        <h3>saintelmosfire@gmail.com</h3>
+    </div>
+  </div>
+</div>
+
+<div class="container social">
+  <div class="row">
+    <div class="col-sm-5 text-center">
+      <h4>Наша фейсбук сторінка</h4>
+      <p>найактуальніші новини та цікавинки. Будьмо дружніми :)</p>
+    </div>
+      <div class="col-sm-7 fb_widget">
+        <div class="fb-page" data-href="https://www.facebook.com/ElmosFire/" data-tabs="timeline" data-width="500" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/ElmosFire/"><a href="https://www.facebook.com/ElmosFire/">Вогні святого Ельма</a></blockquote></div></div>
+      </div>
+  </div>
+</div>
+
+<div class="container map">
+  <div class="row">
+    <div class="col-sm-5 text-center">
+      <h4>До нас в гості можна завітати сюди:</h4>
+      <h4>Парафія Івана Павла ІІ</h4>
+      <h4>м.Львів, Хуторівка, 35а</h4>
+    </div>
+      <div class="col-sm-6" id="map"></div>
+  </div>
+</div>
+
+
+   
+
+{% endblock content %}

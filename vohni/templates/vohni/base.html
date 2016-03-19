@@ -1,0 +1,77 @@
+{% load static from staticfiles %}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="description" content="	">
+	<title>Saint Elmo fire {% block meta_title %}{% endblock meta_title %}</title>
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/united/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  {% block extra_css %}{% endblock extra_css %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url "home" %}">Головна<span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url "journeys" %}">Мандрівки</a></li>
+        <li><a href="{% url "blog" %}">Блог</a></li>
+        <li><a href="{% url "team" %}">Команда</a></li>
+        
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://www.facebook.com/ElmosFire/"><img class="social_fb_icon" src="/media/svg/fb.svg"></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}{% endblock content %}
+
+<div class="container">
+    <div class="row" id="footer">
+      <div class="col-xs-12">
+       <p class='custom_p'> &copy; 2016 Вогні святого Ельма. Усі права застережено </p>
+      </div>
+    </div>
+</div>
+
+<style>
+
+</style>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 49.801267, lng: 24.037310},
+          zoom: 17
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+      <script type="text/javascript" src="/static/js/main.js"></script>
+      {% block extra_js %}{% endblock extra_js %}
+    
+
+</body>
+</html>

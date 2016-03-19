@@ -1,0 +1,350 @@
+
+
+
+.container_flame{
+  margin: 0px;
+  
+  width: 20px;
+  height: 20px;
+  position:relative;
+  transform-origin:center bottom;
+  animation-name: flicker;
+  animation-duration:3ms;
+  animation-delay:200ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.flame{
+  bottom:0;
+  position:absolute;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  transform:rotate(-45deg) scale(1.5,1.5);
+}
+
+.yellow{
+  left: 5px; 
+  width: 10px;
+  height: 10px;
+  background:gold;
+  box-shadow: 0px 0px 3px 2px gold;
+}
+
+.orange{
+  left:5px; 
+  width: 15px;
+  height: 15px;
+  background:orange;
+  box-shadow: 0px 0px 9px 4px orange;
+}
+
+.red{
+  left:2px;
+  width: 20px;
+  height: 20px;
+  background:OrangeRed;
+  box-shadow: 0px 0px 5px 4px OrangeRed;
+}
+
+.white{
+  left:5px; 
+  bottom:-4px;
+  width: 10px;
+  height: 10px;
+  background:white;
+  box-shadow: 0px 0px 9px 4px white;
+}
+
+.circle{
+  border-radius: 50%;
+  position:absolute;  
+}
+
+
+.first_flame {
+	margin: 30px;
+	float: right;
+	display: none;
+}
+
+.second_flame {
+	margin: 50px;
+	float: left;
+	display: none;
+}
+
+.third_flame {
+	margin-top: 150px;
+	display: none;
+	}
+
+.fourth_flame {
+	margin: 20px;
+	float: right;
+	display: none;
+}
+
+.fifth_flame {
+	margin: 0px;
+	float: right;
+	display: none;	
+}
+
+@keyframes flicker{
+  0%   {transform: rotate(-1deg);}
+  20%  {transform: rotate(1deg);}
+  40%  {transform: rotate(-1deg);}
+  60%  {transform: rotate(1deg) scaleY(1.04);}
+  80%  {transform: rotate(-2deg) scaleY(0.92);}
+  100% {transform: rotate(1deg);}
+}
+
+#map {
+	height: 400px;
+	padding: 35px;
+	margin: 35px;
+	background-color: #CCC;
+
+}
+
+.how_to_find {
+	border-left: 5px solid #772953;
+	margin-top: 50px;
+}
+
+#footer {
+	width: 100%;
+	background: #772953;
+	border-top: 1px solid #dddddd;
+    padding-top: 10px;
+    margin-top: 25px;
+}
+
+.taize {
+	
+    margin-right: 10px;
+    margin-top: 35px;
+    padding-top: 25px;
+    padding-right: 15px;
+    padding-bottom: 25px;
+	border: 2px solid #dddddd;
+	border-radius: 5px;
+}
+
+
+.custom_ul {
+	margin-top: 10px;
+	margin-bottom: 10px;
+    list-style: none;	
+}
+
+
+h1, h2, h3, h4, h5 {
+	color: #DD4814;
+	font-family: 'Amerika';
+	src: url(/static/fonts/AMERIKA_.ttf);
+	font-weight: bold;
+}
+
+.custom_p {
+	color: #EEEEEE;
+	font-size: 14px;
+}
+
+
+.call_to_action {
+	margin-top: 5px;
+}
+
+
+.images {
+	height: 200px;
+	width: 200px;
+	background: #EEEEEE;
+	margin: 25px;
+	border-radius: 100px;
+	padding: 25px;
+}
+
+.important_text {
+	font-size: 28px;
+	color: #EEEEEE;;
+}
+
+.jumbotron {
+	
+	background-image: url("/media/img/sunset2.jpg");
+	background-repeat: repeat-x;
+
+}
+
+.jumbotron p {
+	font-size: 54px;
+	padding: 5px;
+	font-family: 'TypoGraphica';
+	src: url(/static/fonts/TypoGraphica.otf);
+	color: #DD4814;
+}
+
+#trip {
+	
+	height: 400px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+}
+
+.name {
+	color: #fff;
+	font-size: 32px;
+}
+.price {
+	color: #fff;
+	font-size: 24px;
+
+}
+.rout {
+	color: #fff;
+	font-size: 24px;
+}
+
+.main_info {
+	margin-top: 100px;
+}
+
+img {
+	width: 300px;
+	height: 200px;
+}
+
+.blog_image_list {
+	width: 470px;
+	height: 300px;
+	margin-right: 40px;
+}
+
+
+.blog_image_post {
+	width: 100%;
+	height: 100%;
+	
+}
+
+.text {
+	font-size: 16px;
+	color:  black;
+	padding: 5px;
+	font-family: 'Amerika';
+	src: url(/static/fonts/AMERIKAA.ttf);
+}
+
+
+.name_days {
+
+	font-size: 18px;
+	font-weight: bold;
+	color: #DD4814;
+	padding: 5px;
+	float: left;
+
+	
+}
+
+.days_list {
+	list-style: none;
+}
+
+.thumbnail {
+
+	width: 200px;
+	height: 200px;
+}
+
+.social_fb_icon {
+	width: 25px;
+	height: 25px;
+}
+
+.priest {
+	height: 200px;
+	width: 200px;
+	margin: 20px;
+}
+
+blockquote {
+	margin-top: 5px;
+}
+
+.actual_trip {
+	background: #EEEEEE;
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.advantages {
+	width: 100%;
+	background: #fff;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.church {
+	width: 100%;
+	background: #EEEEEE;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.contacts {
+	width: 100%;
+	background: #fff;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.social {
+	width: 100%;
+	background: #EEEEEE;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.map {
+	width: 100%;
+	background: #fff;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.details {
+	margin-top: 20px;
+}
+
+.tab-pane {
+	margin: 20px;
+}
+
+.photologue_photo {
+	padding: 1px;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.journey_image {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.fb_widget {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

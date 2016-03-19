@@ -1,0 +1,73 @@
+{% extends "vohni/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static "css/blog.css" %}">{% endblock extra_css %}
+
+{% block content %}
+
+	<section class="main wrapper">
+		<article>
+			<div class="article_image">
+				<a href="#">
+					<img src="/media/img/pic1.jpg" alt="" title="">
+				</a>
+			</div>
+			<div class="post">
+				<h1 class="title">
+					<a href="#">Як заощадити на харчуванні в Європі</a>
+				</h1>
+				
+				<p>Бюджет: суму грошей поділіть на кількість днів у подорожі, намайгайтесь щодня витрачати не більше, ніж дозволено.</p>
+
+				<p>Перекуси: свіжі фрукти, горішки, сухофрукти, сир, місцеві булочки і пляшка води в сумці – маст-хев, вони врятують від легкого голоду...</p>
+
+				<a class="read_more" href="#">читати далі <i class="read_more_arrow"></i> </a>
+			</div>
+		</article>
+
+		<article>
+			<div class="article_image">
+				<a href="#">
+					<img src="/media/img/pic2.jpg" alt="" title="">
+				</a>
+			</div>
+			<div class="post">
+				<h1 class="title">
+					<a href="#">Duis aute irure dolor in henderit in voluptate.</a>
+				</h1>
+				
+				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo doconsequat, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+
+				<a class="read_more" href="#">читати далі <i class="read_more_arrow"></i> </a>
+			</div>
+		</article>
+
+		<article>
+			<div class="article_image">
+				<a href="#">
+					<img src="/media/img/pic3.jpg" alt="" title="">
+				</a>
+			</div>
+			<div class="post">
+				<h1 class="title">
+					<a href="#">Duis aute irure dolor in henderit in voluptate.</a>
+				</h1>
+				
+				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo doconsequat, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...</p>
+
+				<a class="read_more" href="#">читати далі <i class="read_more_arrow"></i> </a>
+			</div>
+		</article>
+
+		<nav class="pagination">
+			<a href="#" class="previous"><i></i>попередня</a>
+			<a href="#" class="next">наступна<i></i></a>
+		</nav><!-- Pagination End -->
+	</section><!-- Main End -->
+
+{% endblock content %}

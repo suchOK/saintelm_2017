@@ -1,0 +1,80 @@
+/*
+
+	Template Author : pixelhint.com
+	Author Email    : contact@pixelhint.com
+	
+	
+	*****************************************
+	
+	
+	- Header
+	- Main Section
+	- Sidebar & widgets
+	- Pagination
+	- Footer
+	
+*/
+
+
+
+
+/*  Fonts  */
+@font-face {
+    font-family: 'LatoRegular';
+    src: url('../fonts/Lato-Regular.eot');
+    src: url('../fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato-Regular.woff') format('woff'),
+         url('../fonts/Lato-Regular.ttf') format('truetype'),
+         url('../fonts/Lato-Regular.svg#LatoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LatoBold';
+    src: url('../fonts/Lato-Bold.eot');
+    src: url('../fonts/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato-Bold.woff') format('woff'),
+         url('../fonts/Lato-Bold.ttf') format('truetype'),
+         url('../fonts/Lato-Bold.svg#LatoBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+img {
+	width: 300px;
+	height: 200px;
+	margin-top: 20px;
+}
+
+
+.text {
+	font-size: 16px;
+	color:  #772953;
+}
+
+
+
+
+ul.main_nav li a,
+.main .title a,
+.main2 .title a,
+.main a.read_more,
+.main2 a.read_more,
+.main a.read_more i.read_more_arrow,
+.main2 a.read_more i.read_more_arrow,
+.previous,
+.next,
+.previous i,
+.next i,
+footer ul.social_profiles li a,
+.search_widget .search-field{
+	transition: .2s linear;
+	-webkit-transition: .2s linear;
+	-moz-transition: .2s linear;
+	-o-transition: .2s linear;
+}
