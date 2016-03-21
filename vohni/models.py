@@ -90,6 +90,24 @@ class Journey(models.Model):
         default='',
         verbose_name=u"опис п*ятого дня")
 
+    day_6 = models.ForeignKey('day6',
+        blank=True,
+        null=True,
+        default='',
+        verbose_name=u"опис шостого дня")
+
+    day_7 = models.ForeignKey('day7',
+        blank=True,
+        null=True,
+        default='',
+        verbose_name=u"опис сьомого дня")
+
+    day_8 = models.ForeignKey('day8',
+        blank=True,
+        null=True,
+        default='',
+        verbose_name=u"опис восьмого дня")
+
     conditions = models.TextField(
         blank=True,
         verbose_name=u"умови")
@@ -100,7 +118,23 @@ class Journey(models.Model):
 
     options = models.TextField(
         blank=True,
+        null=True,
         verbose_name=u"додаткові опції")
+
+    price_include = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=u"у вартість входить")
+
+    price_not_include = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=u"у вартість не входить")
+
+    donation = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=u"пожертва")
 
 
     def __unicode__(self):
@@ -171,3 +205,63 @@ class day5(models.Model):
 
     def __unicode__(self):
         return u"%s %s" % (self.title_day5, self.day5)
+
+class day6(models.Model):
+
+    title_day6 = models.CharField(
+        max_length=256,
+        blank=False,
+        verbose_name=u"назва шостого дня")
+    day6 = models.TextField(
+        blank=True,
+        verbose_name=u"опис шостого дня")
+
+    def __unicode__(self):
+        return u"%s %s" % (self.title_day6, self.day6)
+
+class day7(models.Model):
+
+    title_day7 = models.CharField(
+        max_length=256,
+        blank=False,
+        verbose_name=u"назва сьомого дня")
+    day7 = models.TextField(
+        blank=True,
+        verbose_name=u"опис сьомого дня")
+
+    def __unicode__(self):
+        return u"%s %s" % (self.title_day7, self.day7)
+
+class day8(models.Model):
+
+    title_day8 = models.CharField(
+        max_length=256,
+        blank=False,
+        verbose_name=u"назва восьмого дня")
+    day8 = models.TextField(
+        blank=True,
+        verbose_name=u"опис восьмого дня")
+
+    def __unicode__(self):
+        return u"%s %s" % (self.title_day8, self.day8)
+
+class User_Email(models.Model):
+
+    class Meta(object):
+        verbose_name = u"емейл користувача"
+        verbose_name_plural = u"емейли користувачів"
+
+    email = models.EmailField(
+        max_length=200,
+        blank=False,
+        null=True,
+        verbose_name=u'Ваш email')
+
+    name = models.CharField(
+        max_length=256,
+        blank=False,
+        null=True,
+        verbose_name=u"Ваше ім'я")
+
+    def __unicode__(self):
+        return u"%s %s" % (self.name, self.email)

@@ -132,6 +132,7 @@
     padding-bottom: 25px;
 	border: 2px solid #dddddd;
 	border-radius: 5px;
+	height: 250px;
 }
 
 
@@ -146,7 +147,7 @@ h1, h2, h3, h4, h5 {
 	color: #DD4814;
 	font-family: 'Amerika';
 	src: url(/static/fonts/AMERIKA_.ttf);
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .custom_p {
@@ -161,11 +162,11 @@ h1, h2, h3, h4, h5 {
 
 
 .images {
-	height: 200px;
-	width: 200px;
+	height: 100px;
+	width: 100px;
 	background: #EEEEEE;
 	margin: 25px;
-	border-radius: 100px;
+	border-radius: 50px;
 	padding: 25px;
 }
 
@@ -177,16 +178,18 @@ h1, h2, h3, h4, h5 {
 .jumbotron {
 	
 	background-image: url("/media/img/sunset2.jpg");
+	text-align: center;
 	background-repeat: repeat-x;
 
 }
 
 .jumbotron p {
-	font-size: 54px;
+	font-size: 36px;
 	padding: 5px;
 	font-family: 'TypoGraphica';
 	src: url(/static/fonts/TypoGraphica.otf);
-	color: #DD4814;
+	color: #772953;
+
 }
 
 #trip {
@@ -220,18 +223,6 @@ img {
 	height: 200px;
 }
 
-.blog_image_list {
-	width: 470px;
-	height: 300px;
-	margin-right: 40px;
-}
-
-
-.blog_image_post {
-	width: 100%;
-	height: 100%;
-	
-}
 
 .text {
 	font-size: 16px;
@@ -347,4 +338,14 @@ blockquote {
 .fb_widget {
 	margin-top: 20px;
 	margin-bottom: 20px;
+	float: right;
+}
+
+.location {
+	vertical-align: middle;
+	padding-top: 100px;
+}
+
+.fb_text {
+	padding-top: 150px;
 }

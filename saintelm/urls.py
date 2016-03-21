@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, patterns, include
 from django.contrib import admin
-from vohni.views import JourneyDetailView
+from vohni.views import JourneyDetailView, EmailCreateView
 from blog.views import PostsListView, PostDetailView 
 from .settings import MEDIA_ROOT, DEBUG
 
@@ -26,6 +26,7 @@ urlpatterns = [
     	name='details'),
 #    url(r'^blog/$', 'vohni.views.blog', name='blog'),
     url(r'^team/$', 'vohni.views.team', name='team'),
+    url(r'^confirm/$', EmailCreateView.as_view(), name='confirm'),
     url(r'^blog/$', PostsListView.as_view(), name='blog'),
     url(r'^blog/(?P<pk>\d+)/$', PostDetailView.as_view()),
     url(r'^admin/', admin.site.urls),

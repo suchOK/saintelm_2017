@@ -13,10 +13,10 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<div class="jumbotron col-sm-12">
+<div class="jumbotron col-sm-12 col-xs-12">
   <div class="container">
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-sm-2 col-xs-2">
        <div class="container_flame first_flame">
           <div class="red flame"></div>
           <div class="orange flame"></div>
@@ -42,12 +42,12 @@
           <div class="black circle"></div>
         </div>
       </div>
-      <div class="col-sm-8 text-center">
-        <h3>Мандрівничий осередок</h3>
-          <p class="text_logo">"Вогні Святого Ельма"</p>
-           <p><a href="{% url "journeys" %}" class="btn btn-info btn-lg call_to_action">Гайда до мрії!</a></p>
+      <div class="col-sm-8 col-xs-6 text-center">
+        <p class="text-center">Мандрівничий осередок</p>
+          <p class="text-center">"Вогні Святого Ельма"</p>
+           <p class="text-center"><a href="{% url "journeys" %}" class="btn btn-info btn-lg call_to_action">Гайда до мрії!</a></p>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-2 col-xs-2">
       <div class="container_flame second_flame">
           <div class="red flame"></div>
           <div class="orange flame"></div>
@@ -152,11 +152,11 @@
 
 <div class="container social">
   <div class="row">
-    <div class="col-sm-5 text-center">
-      <h4>Наша фейсбук сторінка</h4>
+    <div class="col-sm-5 text-center fb_text">
+      <h2>Наша фейсбук сторінка</h2>
       <p>найактуальніші новини та цікавинки. Будьмо дружніми :)</p>
     </div>
-      <div class="col-sm-7 fb_widget">
+      <div class="col-sm-7 fb_widget text-center">
         <div class="fb-page" data-href="https://www.facebook.com/ElmosFire/" data-tabs="timeline" data-width="500" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/ElmosFire/"><a href="https://www.facebook.com/ElmosFire/">Вогні святого Ельма</a></blockquote></div></div>
       </div>
   </div>
@@ -164,12 +164,14 @@
 
 <div class="container map">
   <div class="row">
-    <div class="col-sm-5 text-center">
-      <h4>До нас в гості можна завітати сюди:</h4>
+
+   <div class="col-sm-6" id="map"></div>
+    <div class="col-sm-5 text-center location">
+      <h4>Завітайте до нас в гості</h4>
       <h4>Парафія Івана Павла ІІ</h4>
       <h4>м.Львів, Хуторівка, 35а</h4>
+      <h4>Філософсько-богословський факультет УКУ, 2 поверх</h4>
     </div>
-      <div class="col-sm-6" id="map"></div>
   </div>
 </div>
 

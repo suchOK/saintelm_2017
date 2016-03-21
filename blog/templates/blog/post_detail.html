@@ -7,25 +7,20 @@
 
 {% block content %}
 
-	<section class="main wrapper">
-
-	
-
+	<div class="container">
+	  <div class="row">
 		<div class="col-sm-12 col-xs-12 text-center">
-		  <h2>
+		  <h2 class="blog_title">
 			{{ post.title }}
           </h2>
         </div>
-		<div class="col-sm-12 col-xs-12">
+		<div class="col-sm-12 col-xs-12 text-center">
 		<img src="{{ post.blog_photo.url }}" alt="" title="{{ post.blog_photo.url }}" class="blog_image_post">
 		</div>
 					
-		<div>
-		  <p class="text">{{ post.text }}</p>
+		<div class="col-sm-12 col-xs-12 blog_text_wrapper">
+		  <p class="blog_text">{{ post.text }}</p>
 		</div>
-	
-
-	
-	</section><!-- Main End -->
-
+	  </div><!-- Main End -->
+    </div>
 {% endblock content %}

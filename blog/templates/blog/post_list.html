@@ -8,32 +8,33 @@
 
 {% block content %}
 
-	<section class="main wrapper">
+	<div class="container main wrapper">
+	  <div class="row">
 	{% for post in object_list %}
-		<article>
+		<div class="col-xs-12">
 
-		<div class="article_image">
+		  <div class="article_image col-sm-6 col-xs-12">
 				<a href="#">
 					<img class="blog_image_list" src="{{ post.blog_photo.url }}" alt="" title="">
 				</a>
-			</div>
-			<div class="post">
-				<h1 class="title">
+		  </div>
+		  <div class="post col-xs-12 col-sm-5">
+				<h1 class="title text-center">
 					<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 				</h1>
 				
-				<p>{{ post.description }}</p>
+				<p class="text-center">{{ post.description }}</p>
 
-				<a class="read_more" href="{{ post.get_absolute_url }}">читати далі <i class="read_more_arrow"></i> </a>
-			</div>
-		</article>
+				<div class=" text-center">
+				  <a class="read_more btn btn-primary" href="{{ post.get_absolute_url }}">читати далі <i class="read_more_arrow"></i> </a>
+				</div>
+		  </div>
+		</div>
     {% empty %}
         <p>ще немає жодного запису у блозі</p>
     {% endfor %}
-		<nav class="pagination">
-			<a href="#" class="previous"><i></i>попередня</a>
-			<a href="#" class="next">наступна<i></i></a>
-		</nav><!-- Pagination End -->
-	</section><!-- Main End -->
+		
+	</div>
+	</div><!-- Main End -->
 
 {% endblock content %}

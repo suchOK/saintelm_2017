@@ -2,23 +2,25 @@
 
 {% load static from staticfiles %}
 
+
 {% block extra_css %}
   <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
   <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
 {% endblock extra_css %}
 
 {% block content %}
-
+      
     <div class="container">
     <div class="row">
     <div class="col-sm-9 col-sm-offset-1" id="trip" style="background-image: url({{ journey.main_photo.url }});">
-    	
+
       	<div class="main_info">
       	  <h2 class="text-center">{{ journey.title }}</h2>
       	  <h3 class="text-center">{{ journey.cities }}</h3>
       	</div>
       	<div>
       		<h4 class="text-center">{{ journey.price }}</h4>
+           <div class="text-center"><a class="btn btn-info text-center" href="{% url "confirm" %}">Я хочу поїхати!</a></div>
       	</div>
     </div>
     <div class="col-sm-9 col-sm-offset-1">
@@ -57,6 +59,18 @@
                 <td class="col-sm-2 name_days">{{ journey.day_5.title_day5 }}</td>
                 <td class="col-sm-9 text">{{ journey.day_5.day5 }}</td>
               </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_6.title_day6 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_6.day6 }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_7.title_day7 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_7.day7 }}</td>
+              </tr>
+              <tr>
+                <td class="col-sm-2 name_days">{{ journey.day_8.title_day8 }}</td>
+                <td class="col-sm-9 text">{{ journey.day_8.day8 }}</td>
+              </tr>
             </tbody>
           </table>  
            
@@ -71,15 +85,15 @@
             <tbody>
               <tr>
                 <td class="col-sm-2 name_days">Пожертва</td>
-                <td class="col-sm-9 text">{{ journey.conditions }}</td>
+                <td class="col-sm-9 text">{{ journey.donation }}</td>
               </tr>
               <tr>
                 <td class="col-sm-2 name_days">У вартість входить</td>
-                <td class="col-sm-9 text">переїзд автобусом єврокласу, супровід духівника та керівника групи</td>
+                <td class="col-sm-9 text">{{ journey.price_include }}</td>
               </tr>
               <tr>
                 <td class="col-sm-2 name_days">У вартість не входить</td>
-                <td class="col-sm-9 text">екскурсії та інші особисті витрати</td>
+                <td class="col-sm-9 text">{{ journey.price_not_include }}</td>
               </tr>
 
             </tbody>

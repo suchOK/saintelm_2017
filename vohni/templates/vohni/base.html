@@ -31,10 +31,10 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url "home" %}">Головна<span class="sr-only">(current)</span></a></li>
-        <li><a href="{% url "journeys" %}">Мандрівки</a></li>
-        <li><a href="{% url "blog" %}">Блог</a></li>
-        <li><a href="{% url "team" %}">Команда</a></li>
+        <li {% if request.path == '/' %}class="active"{% endif %}><a href="{% url "home" %}">Головна<span class="sr-only">(current)</span></a></li>
+        <li {% if request.path == '/journeys/' %}class="active"{% endif %}><a href="{% url "journeys" %}">Мандрівки</a></li>
+        <li {% if request.path == '/blog/' %}class="active"{% endif %}><a href="{% url "blog" %}">Блог</a></li>
+        <li {% if request.path == '/team/' %}class="active"{% endif %}><a href="{% url "team" %}">Команда</a></li>
         
       </ul>
 
@@ -47,8 +47,8 @@
 
 {% block content %}{% endblock content %}
 
-<div class="container">
-    <div class="row" id="footer">
+<div class="container" id="footer">
+    <div class="row">
       <div class="col-xs-12">
        <p class='custom_p'> &copy; 2016 Вогні святого Ельма. Усі права застережено </p>
       </div>
