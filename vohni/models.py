@@ -263,5 +263,12 @@ class User_Email(models.Model):
         null=True,
         verbose_name=u"Ваше ім'я")
 
+    journey_choice = models.ForeignKey('Journey',
+        verbose_name=u"Мандрівка",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL)
+
+
     def __unicode__(self):
-        return u"%s %s" % (self.name, self.email)
+        return u"%s %s %s" % (self.name, self.email, self.journey_choice)

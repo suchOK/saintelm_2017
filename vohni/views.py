@@ -43,7 +43,7 @@ class JourneyDetailView(DetailView):
 class EmailCreateForm(ModelForm):
     class Meta:
         model = User_Email
-        fields = ['name', 'email']
+        fields = ['name', 'email', 'journey_choice']
 
     def __init__(self, *args, **kwargs):
         super(EmailCreateForm, self).__init__(*args, **kwargs)
@@ -68,7 +68,7 @@ class EmailCreateForm(ModelForm):
         self.helper.layout.append(FormActions(
             Div(css_class = self.helper.label_class),
             Submit('add_button', u'Надіслати', css_class="btn btn-info"),
-            HTML(u"<a class='btn btn-danger' name='cancel_button' href='{% url 'journeys' %}?status_message=Додавання емейла скасовано!'>Скасувати</a>"),
+            HTML(u"<a class='btn btn-danger' name='cancel_button' href='{% url 'journeys' %}?status_message=Ви відмінили додавання своїх даних'>Скасувати</a>"),
         ))
 
 #class for add group
@@ -79,7 +79,7 @@ class EmailCreateView(CreateView):
     
 
     def get_success_url(self):
-        return u'%s?status_message=Емейл успішно надіслано' % reverse('confirm')
+        return u'%s?status_message=Дякуємо :) Ваші дані успішно надіслано. Чекайте на повідомлення від нас' % reverse('journeys')
 
     def post(self, request, *args, **kwargs):
         return super(EmailCreateView, self).post(request, *args, **kwargs)
