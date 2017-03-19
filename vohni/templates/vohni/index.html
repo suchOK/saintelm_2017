@@ -76,10 +76,10 @@
 
     {% for journey in journeys %}
       <div class="col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1 taize" style="background-image: url({{ journey.main_photo.url }});">
-        <h3 class="text-center text-warning">{{ journey.title }}</h3>
-          <h3 class="text-center text-warning">{{ journey.cities }}</h3>
-          <h3 class="text-center text-warning">{{ journey.price }}</h3>
-          <div class="text-center"><a class="btn btn-warning text-center" href="{% url "details" journey.id %}">детальніше</a></div>
+        <h3 class="text-center text-warning">{{ journey.title|safe }}</h3>
+          <h3 class="text-center text-warning">{{ journey.cities|safe }}</h3>
+          <h3 class="text-center text-warning">{{ journey.price|safe }}</h3>
+          <div class="text-center"><a class="btn btn-warning text-center" href="{{ journey.get_absolute_url }}">детальніше</a></div>
       </div>   
     {% endfor %}
 

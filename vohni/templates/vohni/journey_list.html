@@ -11,22 +11,22 @@
 		  <div class="col-sm-12">
 		  
 			<div class="col-sm-4 col-sm-offset-1 journey_image text-center">
-				<a href="{% url "details" journey.id %}">
+				<a href="{{ journey.get_absolute_url }}">
 					<img src="{{ journey.main_photo.url }}" alt="" title="">
 				</a>
 			</div>
 			<div class="col-sm-7">
 				<h3>
-					<a href="{% url "details" journey.id %}">{{ journey.title }}</a>
+					<a href="{{ journey.get_absolute_url }}">{{ journey.title|safe }}</a>
 				</h3>
-				<p class="text col-xs-12">{{ journey.cities }}</p>
+				<p class="text col-xs-12">{{ journey.cities|safe }}</p>
 				<p class="text col-xs-12"><span class="glyphicon glyphicon-calendar"></span>  {{ journey.start_date }} - {{ journey.end_date }}</p>
 				<p class="text col-xs-12"><span class="glyphicon glyphicon-euro"></span> {{ journey.price }}</p>
 				
 				
 				
                 
-				<p class="text col-xs-12">{{ journey.describe }}</p>
+				<p class="text col-xs-12">{{ journey.describe|safe }}</p>
 			</div>
 				
 	      </div>

@@ -4,8 +4,8 @@
 
 
 {% block extra_css %}
-  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-  <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/2.25.0/css/blueimp-gallery.min.css">
+ <!--  <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css"> -->
 {% endblock extra_css %}
 
 {% block content %}
@@ -15,8 +15,8 @@
     <div class="col-sm-9 col-sm-offset-1" id="trip" style="background-image: url({{ journey.main_photo.url }});">
 
       	<div class="main_info">
-      	  <h2 class="text-center">{{ journey.title }}</h2>
-      	  <h3 class="text-center">{{ journey.cities }}</h3>
+      	  <h2 class="text-center">{{ journey.title|safe }}</h2>
+      	  <h3 class="text-center">{{ journey.cities|safe }}</h3>
       	</div>
       	<div>
       		<h4 class="text-center">{{ journey.price }}</h4>
@@ -36,41 +36,18 @@
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade active in" id="home">
         <div>
-        
+        <p>hello world</p>
           <table>
             <tbody>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_1.title_day1 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_1.day1 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_2.title_day2 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_2.day2 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_3.title_day3 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_3.day3 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_4.title_day4 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_4.day4 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_5.title_day5 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_5.day5 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_6.title_day6 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_6.day6 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_7.title_day7 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_7.day7 }}</td>
-              </tr>
-              <tr>
-                <td class="col-sm-2 name_days">{{ journey.day_8.title_day8 }}</td>
-                <td class="col-sm-9 text">{{ journey.day_8.day8 }}</td>
-              </tr>
+            
+            {% for d in journey.day.all %}
+            <tr>
+                <td class="col-sm-2 name_days">{{ d.title_day }}</td>
+                <td class="col-sm-10 text">{{ d.description|safe }}</td>
+                </tr>
+            {% endfor %}
+                
+
             </tbody>
           </table>  
            
@@ -85,15 +62,15 @@
             <tbody>
               <tr>
                 <td class="col-sm-2 name_days">Пожертва</td>
-                <td class="col-sm-9 text">{{ journey.donation }}</td>
+                <td class="col-sm-9 text">{{ journey.donation|safe }}</td>
               </tr>
               <tr>
                 <td class="col-sm-2 name_days">У вартість входить</td>
-                <td class="col-sm-9 text">{{ journey.price_include }}</td>
+                <td class="col-sm-9 text">{{ journey.price_include|safe }}</td>
               </tr>
               <tr>
                 <td class="col-sm-2 name_days">У вартість не входить</td>
-                <td class="col-sm-9 text">{{ journey.price_not_include }}</td>
+                <td class="col-sm-9 text">{{ journey.price_not_include|safe }}</td>
               </tr>
 
             </tbody>
@@ -103,10 +80,10 @@
        
       </div>
       <div class="tab-pane fade" id="docs">
-        <p class="text">{{ journey.documents }}</p>
+        <p class="text">{{ journey.documents|safe }}</p>
       </div>
       <div class="tab-pane fade" id="additional">
-        <p class="text">{{ journey.options }}</p>
+        <p class="text">{{ journey.options|safe }}</p>
       </div>
      <div class="tab-pane fade" id="photo">
       <!--<h3 class="text-center">{{ journey.gallery.title }}"</h3>-->
@@ -170,6 +147,6 @@
     
 {% endblock content %}
 {% block extra_js %}
-<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<script src="js/bootstrap-image-gallery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/2.25.0/js/jquery.blueimp-gallery.min.js"></script><!-- 
+<script src="js/bootstrap-image-gallery.min.js"></script> -->
 {% endblock extra_js %}

@@ -22,7 +22,7 @@ from .settings import MEDIA_ROOT, DEBUG
 urlpatterns = [
     url(r'^$', 'vohni.views.main_page', name='home'),
     url(r'^journeys/$', 'vohni.views.journeys', name='journeys'),
-    url(r'^journeys/(?P<pk>\d+)/details/$', JourneyDetailView.as_view(),
+    url(r'^journeys/(?P<slug>[\w-]+)/$', JourneyDetailView.as_view(),
     	name='details'),
 #    url(r'^blog/$', 'vohni.views.blog', name='blog'),
     url(r'^team/$', 'vohni.views.team', name='team'),
@@ -34,6 +34,7 @@ urlpatterns = [
 
 urlpatterns += patterns('',
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
+    url(r'^tinymce/', include('tinymce.urls')),
 )
 
 if DEBUG:

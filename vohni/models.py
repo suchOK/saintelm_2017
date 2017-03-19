@@ -2,8 +2,10 @@
 
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from photologue.models import Gallery
+from tinymce import models as tinymce_models
 
 # Create your models here.
 
@@ -19,6 +21,8 @@ class Journey(models.Model):
         blank=False,
         verbose_name=u"назва мандрівки")
 
+    slug = models.SlugField(max_length=100, unique=True)
+
     gallery = models.ForeignKey('photologue.Gallery',
         verbose_name=u"фотки",
         blank=True,
@@ -26,11 +30,11 @@ class Journey(models.Model):
         related_name='gallery',
         on_delete=models.SET_NULL)
 
-    describe = models.TextField(
+    describe = tinymce_models.HTMLField(
         blank=True,
         verbose_name=u"короткий опис")
 
-    cities = models.CharField(
+    cities = tinymce_models.HTMLField(
         max_length=256,
         blank=False,
         verbose_name=u"міста")
@@ -56,194 +60,59 @@ class Journey(models.Model):
         verbose_name=u"фото",
         null=True)
 
-    roadmap = models.TextField(
+    day = models.ManyToManyField('Day',
         blank=True,
-        verbose_name=u"маршрут")
-
-    day_1 = models.ForeignKey('day1',
-        blank=True,
-        null=True,
         default='',
-        verbose_name=u"опис першого дня")
+        verbose_name=u"опис мандрівного дня")
 
-    day_2 = models.ForeignKey('day2',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис другого дня")
-
-    day_3 = models.ForeignKey('day3',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис третього дня")
-
-    day_4 = models.ForeignKey('day4',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис четвертого дня")
-
-    day_5 = models.ForeignKey('day5',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис п*ятого дня")
-
-    day_6 = models.ForeignKey('day6',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис шостого дня")
-
-    day_7 = models.ForeignKey('day7',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис сьомого дня")
-
-    day_8 = models.ForeignKey('day8',
-        blank=True,
-        null=True,
-        default='',
-        verbose_name=u"опис восьмого дня")
-
-    conditions = models.TextField(
+    conditions = tinymce_models.HTMLField(
         blank=True,
         verbose_name=u"умови")
 
-    documents = models.TextField(
+    documents = tinymce_models.HTMLField(
         blank=True,
         verbose_name=u"документи")
 
-    options = models.TextField(
+    options = tinymce_models.HTMLField(
         blank=True,
         null=True,
         verbose_name=u"додаткові опції")
 
-    price_include = models.TextField(
+    price_include = tinymce_models.HTMLField(
         blank=True,
         null=True,
         verbose_name=u"у вартість входить")
 
-    price_not_include = models.TextField(
+    price_not_include = tinymce_models.HTMLField(
         blank=True,
         null=True,
         verbose_name=u"у вартість не входить")
 
-    donation = models.TextField(
+    donation = tinymce_models.HTMLField(
         blank=True,
         null=True,
         verbose_name=u"пожертва")
 
+    def get_absolute_url(self):
+    	return reverse("details", kwargs={"slug" : self.slug})
 
     def __unicode__(self):
         return u"%s %s" % (self.title, self.cities)
 
 
-class day1(models.Model):
+class Day(models.Model):
 
-    title_day1 = models.CharField(
+    title_day = models.CharField(
         max_length=256,
         blank=False,
-        verbose_name=u"назва першого дня")
-    day1 = models.TextField(
+        verbose_name=u"назва дня")
+    description = tinymce_models.HTMLField(
         blank=True,
-        verbose_name=u"опис першого дня")
+        verbose_name=u"опис дня")
 
     def __unicode__(self):
-        return u"%s %s" % (self.title_day1, self.day1)
+        return u"%s %s" % (self.title_day, self.day)
 
-class day2(models.Model):
-
-    title_day2 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва другого дня")
-    day2 = models.TextField(
-        blank=True,
-        verbose_name=u"опис другого дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day2, self.day2)
-
-class day3(models.Model):
-
-    title_day3 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва третього дня")
-    day3 = models.TextField(
-        blank=True,
-        verbose_name=u"опис третього дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day3, self.day3)
-
-class day4(models.Model):
-
-    title_day4 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва четвертого дня")
-    day4 = models.TextField(
-        blank=True,
-        verbose_name=u"опис четвертого дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day4, self.day4)
-
-class day5(models.Model):
-
-    title_day5 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва п*ятого дня")
-    day5 = models.TextField(
-        blank=True,
-        verbose_name=u"опис п*ятого дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day5, self.day5)
-
-class day6(models.Model):
-
-    title_day6 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва шостого дня")
-    day6 = models.TextField(
-        blank=True,
-        verbose_name=u"опис шостого дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day6, self.day6)
-
-class day7(models.Model):
-
-    title_day7 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва сьомого дня")
-    day7 = models.TextField(
-        blank=True,
-        verbose_name=u"опис сьомого дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day7, self.day7)
-
-class day8(models.Model):
-
-    title_day8 = models.CharField(
-        max_length=256,
-        blank=False,
-        verbose_name=u"назва восьмого дня")
-    day8 = models.TextField(
-        blank=True,
-        verbose_name=u"опис восьмого дня")
-
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day8, self.day8)
 
 class User_Email(models.Model):
 
@@ -272,3 +141,4 @@ class User_Email(models.Model):
 
     def __unicode__(self):
         return u"%s %s %s" % (self.name, self.email, self.journey_choice)
+
