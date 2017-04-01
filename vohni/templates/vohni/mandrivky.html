@@ -15,11 +15,11 @@
     <div class="col-sm-9 col-sm-offset-1" id="trip" style="background-image: url({{ journey.main_photo.url }});">
 
       	<div class="main_info">
-      	  <h2 class="text-center">{{ journey.title|safe }}</h2>
-      	  <h3 class="text-center">{{ journey.cities|safe }}</h3>
+      	  <h2 class="text-center"><span>{{ journey.title|safe }}</span></h2>
+      	  <h3 class="text-center"><span>{{ journey.cities|safe }}</span></h3>
       	</div>
       	<div>
-      		<h4 class="text-center">{{ journey.price }}</h4>
+      		<h4 class="text-center"><span>{{ journey.price }}</span></h4>
            <div class="text-center"><a class="btn btn-info text-center" href="{% url "confirm" %}">Я хочу поїхати!</a></div>
       	</div>
     </div>
@@ -36,7 +36,6 @@
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade active in" id="home">
         <div>
-        <p>hello world</p>
           <table>
             <tbody>
             

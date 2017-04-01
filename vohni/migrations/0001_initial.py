@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
+import tinymce.models
 
 
 class Migration(migrations.Migration):
@@ -15,48 +16,54 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Day',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('title_day', models.CharField(max_length=256, verbose_name='назва дня')),
-                ('description', models.TextField(blank=True, verbose_name='опис дня')),
+                ('description', tinymce.models.HTMLField(verbose_name='опис дня', blank=True)),
+                ('order_in_journey', models.IntegerField(verbose_name='порядковий номер у мандрівці')),
             ],
+            options={
+                'ordering': ['order_in_journey'],
+                'verbose_name': 'День',
+                'verbose_name_plural': 'Дні',
+            },
         ),
         migrations.CreateModel(
             name='Journey',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=256, verbose_name='назва мандрівки')),
                 ('slug', models.SlugField(max_length=100, unique=True)),
-                ('describe', models.TextField(blank=True, verbose_name='короткий опис')),
-                ('cities', models.CharField(max_length=256, verbose_name='міста')),
-                ('price', models.CharField(blank=True, max_length=256, verbose_name='ціна', default='')),
-                ('start_date', models.DateField(verbose_name='початок мандрівки', null=True)),
-                ('end_date', models.DateField(verbose_name='кінець мандрівки', null=True)),
-                ('main_photo', models.ImageField(blank=True, verbose_name='фото', upload_to='', null=True)),
-                ('conditions', models.TextField(blank=True, verbose_name='умови')),
-                ('documents', models.TextField(blank=True, verbose_name='документи')),
-                ('options', models.TextField(blank=True, verbose_name='додаткові опції', null=True)),
-                ('price_include', models.TextField(blank=True, verbose_name='у вартість входить', null=True)),
-                ('price_not_include', models.TextField(blank=True, verbose_name='у вартість не входить', null=True)),
-                ('donation', models.TextField(blank=True, verbose_name='пожертва', null=True)),
-                ('day', models.ManyToManyField(blank=True, to='vohni.Day', verbose_name='опис мандрівного дня', default='')),
-                ('gallery', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.SET_NULL, to='photologue.Gallery', null=True, related_name='gallery', verbose_name='фотки')),
+                ('describe', tinymce.models.HTMLField(verbose_name='короткий опис', blank=True)),
+                ('cities', tinymce.models.HTMLField(max_length=256, verbose_name='міста')),
+                ('price', models.CharField(default='', max_length=256, verbose_name='ціна', blank=True)),
+                ('start_date', models.DateField(null=True, verbose_name='початок мандрівки')),
+                ('end_date', models.DateField(null=True, verbose_name='кінець мандрівки')),
+                ('main_photo', models.ImageField(null=True, upload_to='', verbose_name='фото', blank=True)),
+                ('conditions', tinymce.models.HTMLField(verbose_name='умови', blank=True)),
+                ('documents', tinymce.models.HTMLField(verbose_name='документи', blank=True)),
+                ('options', tinymce.models.HTMLField(null=True, verbose_name='додаткові опції', blank=True)),
+                ('price_include', tinymce.models.HTMLField(null=True, verbose_name='у вартість входить', blank=True)),
+                ('price_not_include', tinymce.models.HTMLField(null=True, verbose_name='у вартість не входить', blank=True)),
+                ('donation', tinymce.models.HTMLField(null=True, verbose_name='пожертва', blank=True)),
+                ('day', models.ForeignKey(blank=True, to='vohni.Day', default='', verbose_name='опис мандрівного дня')),
+                ('gallery', models.ForeignKey(related_name='gallery', blank=True, on_delete=django.db.models.deletion.SET_NULL, null=True, to='photologue.Gallery', verbose_name='фотки')),
             ],
             options={
-                'verbose_name_plural': 'Мандрівки',
                 'verbose_name': 'Мандрівка',
+                'verbose_name_plural': 'Мандрівки',
             },
         ),
         migrations.CreateModel(
             name='User_Email',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
-                ('email', models.EmailField(max_length=200, verbose_name='Ваш email', null=True)),
-                ('name', models.CharField(max_length=256, verbose_name="Ваше ім'я", null=True)),
-                ('journey_choice', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.SET_NULL, to='vohni.Journey', null=True, verbose_name='Мандрівка')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('email', models.EmailField(null=True, max_length=200, verbose_name='Ваш email')),
+                ('name', models.CharField(null=True, max_length=256, verbose_name="Ваше ім'я та номер телефону")),
+                ('journey_choice', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.SET_NULL, null=True, to='vohni.Journey', verbose_name='Мандрівка')),
             ],
             options={
-                'verbose_name_plural': 'емейли користувачів',
                 'verbose_name': 'емейл користувача',
+                'verbose_name_plural': 'емейли користувачів',
             },
         ),
     ]

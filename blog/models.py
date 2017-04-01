@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.urlresolvers import reverse
+from tinymce import models as tinymce_models
 
 # Create your models here.
 
@@ -17,13 +19,15 @@ class Post(models.Model):
         blank=False,
         verbose_name=u"назва поста")
 
+    slug = models.SlugField(max_length=100, unique=True)
+
     datetime = models.DateTimeField(u'Дата публікації')
 
-    description = models.TextField(
+    description = tinymce_models.HTMLField(
         blank=True,
         verbose_name=u"короткий опис")
 
-    text = models.TextField(
+    text = tinymce_models.HTMLField(
         blank=True,
         verbose_name=u"текст")
 
@@ -32,8 +36,11 @@ class Post(models.Model):
         verbose_name=u"фото",
         null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % (self.title)
 
+    # def get_absolute_url(self):
+    # 	return "/blog/%i/" % self.id
+
     def get_absolute_url(self):
-    	return "/blog/%i/" % self.id
+        return reverse("posts", kwargs={"slug" : self.slug})

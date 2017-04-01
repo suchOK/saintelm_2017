@@ -20,10 +20,10 @@
 		  </div>
 		  <div class="post col-xs-12 col-sm-5">
 				<h1 class="title text-center">
-					<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+					<a href="{{ post.get_absolute_url }}">{{ post.title|safe }}</a>
 				</h1>
 				
-				<p class="text-center">{{ post.description }}</p>
+				<p class="text-center">{{ post.description|safe }}</p>
 
 				<div class=" text-center">
 				  <a class="read_more btn btn-primary" href="{{ post.get_absolute_url }}">читати далі <i class="read_more_arrow"></i> </a>

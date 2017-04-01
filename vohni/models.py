@@ -94,24 +94,33 @@ class Journey(models.Model):
         verbose_name=u"пожертва")
 
     def get_absolute_url(self):
-    	return reverse("details", kwargs={"slug" : self.slug})
+        return reverse("details", kwargs={"slug" : self.slug})
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s %s" % (self.title, self.cities)
 
 
 class Day(models.Model):
 
+    class Meta(object):
+        verbose_name = u"День"
+        verbose_name_plural = u"Дні"
+        ordering = ['date_day']
+
     title_day = models.CharField(
         max_length=256,
         blank=False,
         verbose_name=u"назва дня")
+
     description = tinymce_models.HTMLField(
         blank=True,
         verbose_name=u"опис дня")
 
-    def __unicode__(self):
-        return u"%s %s" % (self.title_day, self.day)
+    date_day = models.DateField(verbose_name=u"дата дня")
+
+    def __str__(self):
+        return u"%s %s" % (self.title_day, self.description)
+
 
 
 class User_Email(models.Model):
@@ -130,7 +139,7 @@ class User_Email(models.Model):
         max_length=256,
         blank=False,
         null=True,
-        verbose_name=u"Ваше ім'я")
+        verbose_name=u"Ваше ім'я та номер телефону")
 
     journey_choice = models.ForeignKey('Journey',
         verbose_name=u"Мандрівка",
@@ -138,7 +147,6 @@ class User_Email(models.Model):
         null=True,
         on_delete=models.SET_NULL)
 
-
-    def __unicode__(self):
+    def __str__(self):
         return u"%s %s %s" % (self.name, self.email, self.journey_choice)
 

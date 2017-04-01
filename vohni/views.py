@@ -17,23 +17,20 @@ from .models import Journey, User_Email
 
 # Create your views here.
 def main_page(request):
-    journeys = Journey.objects.all()
-    order_by = request.GET.get('order_by', 'end_date')
-    journeys = journeys.order_by(order_by).filter()[:2]
+
+    journeys = Journey.objects.all().order_by('-start_date').filter()[:2]
 
     return render(request, 'vohni/index.html', {'journeys': journeys})
 
 
 def journeys(request):
 
-    journeys = Journey.objects.all()
+    journeys = Journey.objects.all().order_by('-start_date')
     return render(request, 'vohni/journey_list.html', {'journeys': journeys})
 
 def blog(request):
     return render(request, 'vohni/blog.html', {})
 
-def team(request):
-    return render(request, 'vohni/team.html', {})
 
 class JourneyDetailView(DetailView):
     model = Journey

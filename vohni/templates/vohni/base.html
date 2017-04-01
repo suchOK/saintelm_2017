@@ -8,6 +8,7 @@
     <meta name="robots" content="all,follow">
     <meta name="googlebot" content="index,follow,snippet,archive">
     <meta name="description" content="	">
+    <link rel="icon" type="image/x-icon" href="http://res.cloudinary.com/igorisius/image/upload/v1472911425/favicon.ico"/>
 	<title>Saint Elmo fire {% block meta_title %}{% endblock meta_title %}</title>
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/united/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
@@ -17,6 +18,7 @@
 </head>
 
 <body>
+<div class="main_wrapper">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -33,9 +35,7 @@
       <ul class="nav navbar-nav">
         <li {% if request.path == '/' %}class="active"{% endif %}><a href="{% url "home" %}">Головна<span class="sr-only">(current)</span></a></li>
         <li {% if request.path == '/journeys/' %}class="active"{% endif %}><a href="{% url "journeys" %}">Мандрівки</a></li>
-        <li {% if request.path == '/blog/' %}class="active"{% endif %}><a href="{% url "blog" %}">Блог</a></li>
-        <li {% if request.path == '/team/' %}class="active"{% endif %}><a href="{% url "team" %}">Команда</a></li>
-        
+        <li {% if request.path == '/blog/' %}class="active"{% endif %}><a href="{% url "blog" %}">Блог</a></li>       
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -55,11 +55,12 @@
       {% block content %}
 
       {% endblock content %}
+</div>
 
 <div class="container" id="footer">
     <div class="row">
       <div class="col-xs-12">
-       <p class='custom_p'> &copy; 2016 Вогні святого Ельма. Усі права застережено </p>
+       <p class='custom_p'> &copy; 2015-2017 Вогні святого Ельма. Усі права застережено </p>
       </div>
     </div>
 </div>

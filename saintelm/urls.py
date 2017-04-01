@@ -24,11 +24,9 @@ urlpatterns = [
     url(r'^journeys/$', 'vohni.views.journeys', name='journeys'),
     url(r'^journeys/(?P<slug>[\w-]+)/$', JourneyDetailView.as_view(),
     	name='details'),
-#    url(r'^blog/$', 'vohni.views.blog', name='blog'),
-    url(r'^team/$', 'vohni.views.team', name='team'),
     url(r'^confirm/$', EmailCreateView.as_view(), name='confirm'),
     url(r'^blog/$', PostsListView.as_view(), name='blog'),
-    url(r'^blog/(?P<pk>\d+)/$', PostDetailView.as_view()),
+    url(r'^blog/(?P<slug>[\w-]+)/$', PostDetailView.as_view(), name='posts'),
     url(r'^admin/', admin.site.urls),
 ]
 
