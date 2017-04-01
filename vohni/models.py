@@ -23,6 +23,8 @@ class Journey(models.Model):
 
     slug = models.SlugField(max_length=100, unique=True)
 
+    active = models.BooleanField(default=True)
+
     gallery = models.ForeignKey('photologue.Gallery',
         verbose_name=u"фотки",
         blank=True,
@@ -97,7 +99,7 @@ class Journey(models.Model):
         return reverse("details", kwargs={"slug" : self.slug})
 
     def __str__(self):
-        return u"%s %s" % (self.title, self.cities)
+        return u"%s" % (self.title)
 
 
 class Day(models.Model):

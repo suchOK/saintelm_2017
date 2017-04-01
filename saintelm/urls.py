@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, patterns, include
 from django.contrib import admin
-from vohni.views import JourneyDetailView, EmailCreateView
+from vohni.views import JourneyDetailView, EmailCreateView, JourneyListView
 from blog.views import PostsListView, PostDetailView 
 from .settings import MEDIA_ROOT, DEBUG
 
 urlpatterns = [
     url(r'^$', 'vohni.views.main_page', name='home'),
-    url(r'^journeys/$', 'vohni.views.journeys', name='journeys'),
+    url(r'^journeys/$', JourneyListView.as_view(), name='journeys'),
     url(r'^journeys/(?P<slug>[\w-]+)/$', JourneyDetailView.as_view(),
     	name='details'),
     url(r'^confirm/$', EmailCreateView.as_view(), name='confirm'),
