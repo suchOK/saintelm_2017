@@ -8,15 +8,16 @@ from django.forms import ModelForm
 from .forms import EmailCreateForm
 
 
-from .models import Journey, User_Email
+from .models import Journey, User_Email, CoverImage
 
 
 # Create your views here.
 def main_page(request):
 
     journeys = Journey.objects.filter(active=True).order_by('-start_date')[:2]
+    cover_images = CoverImage.objects.all()
 
-    return render(request, 'vohni/index.html', {'journeys': journeys})
+    return render(request, 'vohni/index.html', {'journeys': journeys, 'cover_images': cover_images})
 
 
 class JourneyListView(ListView):

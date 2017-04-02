@@ -152,3 +152,17 @@ class User_Email(models.Model):
     def __str__(self):
         return u"%s %s %s" % (self.name, self.email, self.journey_choice)
 
+
+class CoverImage(models.Model):
+
+    class Meta(object):
+        verbose_name = u"фото на головній"
+
+    cover_image_url = models.CharField(
+        max_length=200,
+        blank=True,
+        null=True,
+        verbose_name=u'посилання')
+
+    def __str__(self):
+        return u"%s" % (self.cover_image_url)

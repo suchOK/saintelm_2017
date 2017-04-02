@@ -1,0 +1,72 @@
+{% load static from staticfiles %}
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/united/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{% block content %}
+        {% for c in cover_images %}
+<div class="jumbotron col-sm-12 col-xs-12" style="background-image: url('{{ c.cover_image_url }}');">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2 col-xs-2">
+       <div class="container_flame first_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+        <div class="container_flame third_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+        <div class="container_flame fifth_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-xs-6 text-center">
+        <h2><span class="text-center">Мандрівничий осередок</span></h2>
+
+
+<p>{{ c.cover_image_url }}</p>
+
+
+
+{% endfor %}
+
+        <h2><span class="text-center">"Вогні Святого Ельма"</span></h2>
+           <p class="text-center"><a href="{% url "journeys" %}" class="btn btn-info btn-lg call_to_action">Гайда до мрії!</a></p>
+      </div>
+      <div class="col-sm-2 col-xs-2">
+      <div class="container_flame second_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+
+        <div class="container_flame fourth_flame">
+          <div class="red flame"></div>
+          <div class="orange flame"></div>
+          <div class="yellow flame"></div>
+          <div class="white flame"></div>
+          <div class="blue circle"></div>
+          <div class="black circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

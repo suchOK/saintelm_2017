@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Journey, User_Email, Day
+from .models import Journey, User_Email, Day, CoverImage
 # Register your models here.
 
 
@@ -23,3 +23,4 @@ class User_EmailAdmin(admin.ModelAdmin):
 admin.site.register(Journey, JourneyAdmin)
 admin.site.register(Day, DayAdmin)
 admin.site.register(User_Email, User_EmailAdmin)
+admin.site.register(CoverImage)

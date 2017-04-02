@@ -12,8 +12,8 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
-<div class="jumbotron col-sm-12 col-xs-12">
+{% for c in cover_images %}
+<div class="jumbotron col-sm-12 col-xs-12" style="background-image: url('{{ c.cover_image_url }}');">
   <div class="container">
     <div class="row">
       <div class="col-sm-2 col-xs-2">
@@ -69,6 +69,7 @@
     </div>
   </div>
 </div>
+{% endfor %}
 
 <div class="container actual_trip">
   <div class="row">
